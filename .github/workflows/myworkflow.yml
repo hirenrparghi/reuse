@@ -2,7 +2,7 @@ name: myworkflow
 on: 
  workflow_call:
    outputs:
-       firstword:
+       new_value:
          description: "The first output string"
          value: ${{ jobs.deploy.outputs.output1 }}  
 jobs:  
@@ -14,8 +14,8 @@ jobs:
     - name: Set Environment Variables
       id: set_env
       run : |
-        echo "value=$(date)" >> $GITHUB_ENV
+        echo "new_value=$(date)" >> $GITHUB_ENV
     - name: get env
       run: |
-       echo "${{ env.value }}"
+       echo "${{ env.new_value }}"
       
