@@ -1,12 +1,18 @@
 name: myworkflow
 on: 
-   push:
-     branches: [ main ]
+ workflow_call:
+   outputs:
+       firstword:
+         description: "The first output string"
+         value: ${{ jobs.deploy.outputs.output1 }}  
 jobs:  
  deploy:
   runs-on: ubuntu-latest
+  outputs:
+      output1: ${{ steps.set_env.outputs.value }}
   steps:
     - name: Set Environment Variables
+      id: set_env
       run : |
         echo "value=$(date)" >> $GITHUB_ENV
     - name: get env
