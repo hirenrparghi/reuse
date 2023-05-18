@@ -7,9 +7,9 @@ jobs:
   runs-on: ubuntu-latest
   steps:
     - name: Set Environment Variables
-      uses: actions/checkout@v2
-      with:
-        varFilePath: ./.github/variables/myvars.env
-    - name: fetch env
-      run : echo ${ env.MYVAR1 }
+      run : |
+        echo "value=$(date)" >> $GITHUB_ENV
+    - name: get env
+      run: |
+       echo "${{ env.value }}"
       
