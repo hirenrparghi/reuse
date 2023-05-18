@@ -9,7 +9,7 @@ jobs:
  deploy:
   runs-on: ubuntu-latest
   outputs:
-      output1: ${{ steps.set_env.outputs.value }}
+      output1: ${{ steps.set_env.outputs.new_value }}
   steps:
     - name: Set Environment Variables
       id: set_env
