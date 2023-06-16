@@ -11,14 +11,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: login to gpr
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}"
-      - name: Install dependencies
-        run: npm ci
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci      
       - name: download published package
         if: always()
         run: |          
           npm i @hirenrparghi/npm-publish@1.0.4
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}          
       - name: check package
         run : |
           pwd
