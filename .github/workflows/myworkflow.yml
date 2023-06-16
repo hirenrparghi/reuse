@@ -2,25 +2,19 @@ name: Reusable workflow
 
 on:
   workflow_call:
-    # Map the workflow outputs to job outputs
-    outputs:
-      todays_date:
-        description: "The first output string"
-        value: ${{ jobs.deploy.outputs.output1 }}
-#       secondword:
-#         description: "The second output string"
-#         value: ${{ jobs.example_job.outputs.output2 }}
 
 jobs:
-  deploy:
-    name: Generate output
+  deploy:    
     runs-on: ubuntu-latest
-    # Map the job outputs to step outputs
-    outputs:
-      output1: ${{ steps.step_one.outputs.todays_date }}
-#       output2: ${{ steps.step2.outputs.secondword }}
     steps:
-      - id: step_one
-        run: echo "todays_date=$(date)" >> $GITHUB_OUTPUT
-#       - id: step2
-#         run: echo "secondword=world" >> $GITHUB_OUTPUT
+      - name: download published package
+        if: always()
+        run: |
+          npm config set @hirenrparghi:registry https://npm.pkg.github.com
+          npm i @hirenrparghi/npm-publish@1.0.4
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+      - name: check package
+        run : |
+          pwd
+          ls -la 
