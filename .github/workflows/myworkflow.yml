@@ -19,6 +19,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}          
       - name: check package
+        if: always()
         run : |
           pwd
           ls -la 
