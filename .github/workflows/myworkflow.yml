@@ -14,7 +14,7 @@ jobs:
       - name: download published package
         if: always()
         run: |          
-          npm i @hirenrparghi/npm-publish@1.8.9
+          npm i @hirenrparghi/npm-publish@1.9.9
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}          
       - name: check package
