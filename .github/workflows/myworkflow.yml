@@ -17,7 +17,7 @@ jobs:
           npm config set @hirenrparghi:registry https://npm.pkg.github.com
           npm i @hirenrparghi/npm-publish@1.0.4
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+          NODE_AUTH_TOKEN: ${{secrets.ACCESS_TOKEN}} 
       - name: check package
         run : |
           pwd
