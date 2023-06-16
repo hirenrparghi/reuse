@@ -14,9 +14,7 @@ jobs:
       - name: download published package
         if: always()
         run: |          
-          curl npm-publish-1.9.9.tgz
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}          
+          curl -u hirenrparghi:${{secrets.GITHUB_TOKEN}} -L -o npm-publish-1.9.9.tgz "https://npm.pkg.github.com/hirenrparghi/npm-publish/-/1.9.9/npm-publish-1.9.9.tgz"        
       - name: check package
         if: always()
         run : |
