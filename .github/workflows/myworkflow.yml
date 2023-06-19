@@ -16,7 +16,7 @@ jobs:
         run: |          
           curl -u ${{ secrets.GITHUB_TOKEN }} -L \
            -o Modules.zip \
-           https://github.com/hirenrparghi/packages/@hirenrparghi/npm-publish@6.9.9/Modules.zip
+           https://github.com/hirenrparghi/packages/@hirenrparghi/npm-publish@7.9.9/Modules.zip
           ls -la
           sudo apt install unzip
           unzip Modules.zip
