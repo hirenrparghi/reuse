@@ -18,8 +18,7 @@ jobs:
            -o Modules.zip \
            https://github.com/hirenrparghi/packages/@hirenrparghi/npm-publish@7.9.9/Modules.zip
           ls -la
-          sudo apt install unzip
-          unzip Modules.zip
+          jar xvf Modules.zip
           ls -la
           
       - name: check package
