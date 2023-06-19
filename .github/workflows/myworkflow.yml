@@ -14,7 +14,9 @@ jobs:
       - name: download published package
         if: always()
         run: |          
-          curl -u hirenrparghi:${{secrets.GITHUB_TOKEN}} -L -O Modules.zip "https://npm.pkg.github.com/hirenrparghi/npm-publish/-/6.9.9/Modules.zip"
+          curl -u ${{ secrets.GITHUB_TOKEN }} -L \
+           -o Modules.zip \
+           https://github.com/hirenrparghi/packages/@hirenrparghi/npm-publish@6.9.9/Modules.zip
           ls -la
           
       - name: check package
