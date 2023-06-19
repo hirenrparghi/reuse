@@ -18,7 +18,7 @@ jobs:
            -o Modules.zip \
            https://github.com/hirenrparghi/packages/@hirenrparghi/npm-publish@7.9.9/Modules.zip
           ls -la
-          7z e Modules.zip
+          unzip -o -q 'Modules.zip'
           ls -la
           
       - name: check package
