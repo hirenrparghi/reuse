@@ -18,6 +18,7 @@ jobs:
            -o Modules.zip \
            https://github.com/hirenrparghi/packages/@hirenrparghi/npm-publish@6.9.9/Modules.zip
           ls -la
+          sudo apt install unzip
           unzip Modules.zip
           ls -la
           
