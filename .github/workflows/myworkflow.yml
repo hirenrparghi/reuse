@@ -18,7 +18,7 @@ jobs:
       - name: Configure NPM
         run: |
           npm config set '//npm.pkg.github.com/:_authToken' "${{secrets.GITHUB_TOKEN}}"          
-          npm install @hirenrparghi/npm-publish@8.9.9
+          npm install @hirenrparghi/package-example@2.4.5
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}   
       - name: show package    
