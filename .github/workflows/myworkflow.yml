@@ -3,26 +3,25 @@ name: Reusable workflow
 on:
   workflow_dispatch:
 jobs:
-  deploy:    
+  publish-gpr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 12
           registry-url: https://npm.pkg.github.com/
-      - name: download published package
-        if: always()
-        run: |          
-          curl -u ${{ secrets.GITHUB_TOKEN }} -L \
-           -o Modules.zip \
-           https://github.com/hirenrparghi/packages/@hirenrparghi/npm-publish@7.9.9/Modules.zip
+          scope: "@hirenrparghi"
+      - name: check
+        run: |
           ls -la
-          unzip -o -q 'Modules.zip'
-          ls -la
-          
-      - name: check package
-        if: always()
-        run : |
-          pwd
-          ls -la 
+      - name: Configure NPM
+        run: |
+          npm config set '//npm.pkg.github.com/:_authToken' "${{secrets.GITHUB_TOKEN}}"          
+          npm install @hirenrparghi/npm-publish@8.9.9
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}   
+      - name: show package    
+        run: |
+           ls -la
+           
