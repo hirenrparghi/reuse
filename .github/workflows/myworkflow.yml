@@ -17,10 +17,10 @@ jobs:
           ls -la
       - name: Configure NPM
         run: |
-          npm config set '//npm.pkg.github.com/:_authToken' "${{secrets.GITHUB_TOKEN}}"          
+          npm config set '//npm.pkg.github.com/:_authToken' "${{secrets.ACCESS_TOKEN}}"          
           npm install @hirenrparghi/package-example@2.4.5
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}   
+          NODE_AUTH_TOKEN: ${{secrets.ACCESS_TOKEN}}   
       - name: show package    
         run: |
            ls -la
